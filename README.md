@@ -20,9 +20,10 @@ In the root directory, install server & client dependencies
 npm run prep
 ```
 
-Install foreman
+Install foreman & nodemon
 ```bash
 npm install -g foreman
+npm install -g nodemon
 ```
 
 Start the client and server in development mode
@@ -53,3 +54,4 @@ Or optionally you can run the server tests by itself
 ```bash
 npm run server:lint
 ```
+

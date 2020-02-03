@@ -9,8 +9,10 @@
     "server:start": "npm run --prefix server start",
     "test": "npm run server:test",
     "server:test": "npm run --prefix server test",
+    "lint": "npm run server:lint",
     "server:lint": "npm run --prefix server lint",
-    "develop": "nf --procfile Procfile.dev start"
+    "develop": "nf --procfile Procfile.dev start",
+    "server:develop": "npm run --prefix server develop"
   },
   "keywords": [],
   "author": "@edwinthinks",
