@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "description": "A stack that serves React on the frontend and uses express, node, and postgresql on the backend",
   "main": "index.js",
+  "scripts": {
+    "start": "npm run server:start",
+    "server:start": "npm run --prefix server start"
+  },
   "keywords": [],
   "author": "@edwinthinks",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
 }

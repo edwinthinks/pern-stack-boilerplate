@@ -4,7 +4,7 @@
   "description": "A express API server that uses postgresql",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=8000 node -r esm index.js",
+    "start": "node -r esm index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
