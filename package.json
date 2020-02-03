@@ -4,8 +4,10 @@
   "description": "A stack that serves React on the frontend and uses express, node, and postgresql on the backend",
   "main": "index.js",
   "scripts": {
+    "prep": "npm install && npm --prefix server install",
     "start": "npm run server:start",
-    "server:start": "npm run --prefix server start"
+    "server:start": "npm run --prefix server start",
+    "develop": "nf --procfile Procfile.dev start"
   },
   "keywords": [],
   "author": "@edwinthinks",
