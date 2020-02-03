@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import logger from 'loglevel'
 
-function startServer({port = process.env.PORT} = {}) {
+function startServer ({ port = process.env.PORT } = {}) {
   const app = express()
   app.use(bodyParser.json())
 
@@ -21,4 +21,3 @@ function startServer({port = process.env.PORT} = {}) {
 }
 
 export default startServer
-

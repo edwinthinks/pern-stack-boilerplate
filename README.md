@@ -30,9 +30,9 @@ Start the client and server in development mode
 npm run develop
 ```
 
-## Running Tests
+## Tests
 
-You can run both client & server tests 
+You can run both client & server tests
 ```bash
 npm run test
 ```
@@ -42,5 +42,14 @@ Or optionally you can run the server tests by itself
 npm run server:test
 ```
 
+## Linting
 
+You can run both client & server linting
+```bash
+npm run lint
+```
 
+Or optionally you can run the server tests by itself
+```bash
+npm run server:lint
+```

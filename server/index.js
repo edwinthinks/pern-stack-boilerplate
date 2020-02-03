@@ -27,5 +27,3 @@ if (!isProd) {
  * Start the server!
  */
 startServer()
-
-
