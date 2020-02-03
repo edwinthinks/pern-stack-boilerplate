@@ -30,3 +30,17 @@ Start the client and server in development mode
 npm run develop
 ```
 
+## Running Tests
+
+You can run both client & server tests 
+```bash
+npm run test
+```
+
+Or optionally you can run the server tests by itself
+```bash
+npm run server:test
+```
+
+
+

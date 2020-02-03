@@ -7,6 +7,8 @@
     "prep": "npm install && npm --prefix server install",
     "start": "npm run server:start",
     "server:start": "npm run --prefix server start",
+    "test": "npm run server:test",
+    "server:test": "npm run --prefix server test",
     "develop": "nf --procfile Procfile.dev start"
   },
   "keywords": [],
