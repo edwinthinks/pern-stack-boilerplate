@@ -1,3 +1,5 @@
+import models from '../models'
+
 async function randomNumber (req, res) {
   res.json({
     message: 'Hello World!',
