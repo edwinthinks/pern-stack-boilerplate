@@ -1,10 +1,10 @@
 import express from 'express'
-import * as sampleController from './controllers/sample-controller.js'
+import * as usersController from './controllers/users-controller.js'
 
 function getRouter () {
   const router = express.Router()
 
-  router.get('/random', sampleController.randomNumber)
+  router.get('/users', usersController.index)
 
   return router
 }
