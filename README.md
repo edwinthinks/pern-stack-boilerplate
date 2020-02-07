@@ -75,7 +75,7 @@ npm run develop
 ```
 
 Accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) should then return json
-of all sample users Jake The Human and Finn The Dog.
+of all sample users: Jake The Human and Finn The Dog!
 
 ## Tests
 
