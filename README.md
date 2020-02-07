@@ -74,6 +74,9 @@ Start the client and server in development mode
 npm run develop
 ```
 
+Accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) should then return json
+of all sample users Jake The Human and Finn The Dog.
+
 ## Tests
 
 You can run both client & server tests
