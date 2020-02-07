@@ -15,16 +15,59 @@ Clone the repo
 git clone https://github.com/edwinthinks/pern-stack-boilerplate.git
 ```
 
+### Installation Dependencies
+
 In the root directory, install server & client dependencies
 ```bash
 npm run prep
 ```
 
-Install foreman & nodemon
+Install foreman, nodemon, and sequelize
 ```bash
 npm install -g foreman
 npm install -g nodemon
+npm install -g sequelize
 ```
+
+### Setup the database
+
+First modify `server/src/config/config.json` to match your database credentials. Primarily, you should only need to change the username, password, and database values of the development and test keys. More information on production in the [deployment to heroku section]()
+
+```json
+{
+  "development": {
+    "username": "YOUR_USERNAME",
+    "password":  "YOUR_PASSWORD",
+    "database": "YOUR_APP_DEVELOPMENT",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "YOUR_USERNAME",
+    "password":  "YOUR_PASSWORD",
+    "database": "YOUR_APP_TEST",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect":"postgres",
+    "ssl": true
+  }
+}
+```
+
+Create the database, migrate, and seed with sample data.
+```
+cd server
+npx sequelize db:create
+npx sequelize db:migrate
+npx sequelize db:seed:all
+```
+
+### Starting the server & client
 
 Start the client and server in development mode
 ```bash
@@ -54,4 +97,8 @@ Or optionally you can run the server tests by itself
 ```bash
 npm run server:lint
 ```
+
+
+
+
 
