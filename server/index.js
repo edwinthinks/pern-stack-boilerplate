@@ -1,5 +1,5 @@
 import logger from 'loglevel'
-import startServer from './src/start.js'
+import { startServer, inProduction } from './src/start.js'
 
 /*
  * Store a boolean value that indicates if the
