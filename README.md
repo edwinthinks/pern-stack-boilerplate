@@ -74,8 +74,12 @@ Start the client and server in development mode
 npm run develop
 ```
 
-Accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) should then return json
-of all sample users: Jake The Human and Finn The Dog!
+A browser should open up to [http://localhost:3000/](http://localhost:3000/) with the frontend client loaded.
+The server will be hosted on [http://localhost:3001/api](http://localhost:3001/api). You can test
+that the server's API is working by accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) and
+you should see sample user data.
+
+![Demo](sample-demo.png)
 
 ## Tests
 
@@ -84,9 +88,10 @@ You can run both client & server tests
 npm run test
 ```
 
-Or optionally you can run the server tests by itself
+Or optionally you can run the server & client tests separately
 ```bash
 npm run server:test
+npm run client:test
 ```
 
 ## Linting
@@ -96,12 +101,9 @@ You can run both client & server linting
 npm run lint
 ```
 
-Or optionally you can run the server tests by itself
+Or optionally you can run the server & client linting separately
 ```bash
 npm run server:lint
+npm run client:lint
 ```
-
-
-
-
 
