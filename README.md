@@ -1,12 +1,15 @@
 # PERN Stack Boilerplate
 
-This is a boilerplate for a project that aims to use React with Express, Node, and Postgres. Using this boilerplate
-you should be able to easily develop & deploy a functioning React application that communicates with a API backend
-written with express. You are afforded the ability to deploy this to heroku into a single dyno. Read more beneath
-to get started.
+This is a boilerplate for a project that aims to use React with Express, Node, and Postgres. Using this boilerplate you should be able to easily develop & deploy a functioning React application that communicates with a API backend written with express.
 
 #### Happy coding!
 ![Cat Typing Very Fast](https://media.giphy.com/media/heIX5HfWgEYlW/giphy.gif)
+
+## Requirements
+
+- Node (version 10.15.3 or higher)
+- NPM
+- Postgres - installation instructions [here](https://www.postgresql.org/download/)
 
 ## Getting Started
 
@@ -31,7 +34,7 @@ npm install -g sequelize
 
 ### Setup the database
 
-First modify `server/src/config/config.json` to match your database credentials. Primarily, you should only need to change the username, password, and database values of the development and test keys. More information on production in the [deployment to heroku section]()
+First modify `server/src/config/config.json` to match your database credentials. Primarily, you should only need to change the username, password, and database values of the development and test keys.
 
 ```json
 {
@@ -106,4 +109,5 @@ Or optionally you can run the server & client linting separately
 npm run server:lint
 npm run client:lint
 ```
+
 
