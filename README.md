@@ -79,6 +79,8 @@ The server will be hosted on [http://localhost:3001/api](http://localhost:3001/a
 that the server's API is working by accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) and
 you should see sample user data.
 
+![Demo](sample-demo.png)
+
 ## Tests
 
 You can run both client & server tests
