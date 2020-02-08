@@ -15,7 +15,8 @@
     "server:lint": "npm run --prefix server lint",
     "test": "npm run server:test && npm run client:test",
     "server:test": "npm run --prefix server test",
-    "client:test": "CI=true npm run --prefix client test"
+    "client:test": "CI=true npm run --prefix client test",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "@edwinthinks",

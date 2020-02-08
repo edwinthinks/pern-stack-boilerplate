@@ -16,8 +16,8 @@ function startServer ({ port = process.env.PORT } = {}) {
   if (inProduction()) {
     // If the server is running in production, the client should
     // be served from the `build` directory of the `client` folder.
-    const clientPath = path.join(__dirname, '/../../client/build');
-    app.use(express.static(clientPath));
+    const clientPath = path.join(__dirname, '/../../client/build')
+    app.use(express.static(clientPath))
   }
 
   return new Promise(resolve => {
@@ -34,7 +34,7 @@ function startServer ({ port = process.env.PORT } = {}) {
   })
 }
 
-function inProduction() {
+function inProduction () {
   return process.env.NODE_ENV === 'production'
 }
 
