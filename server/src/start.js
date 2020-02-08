@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import logger from 'loglevel'
 import getRouter from './routes'
-import './models';
+import './models'
 
 function startServer ({ port = process.env.PORT } = {}) {
   const app = express()

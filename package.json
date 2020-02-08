@@ -10,7 +10,9 @@
     "server:develop": "npm run --prefix server develop",
     "build": "npm run client:build",
     "client:build": "npm run --prefix client build",
+    "lint": "npm run server:lint && npm run client:lint",
     "client:lint": "npm run --prefix client lint",
+    "server:lint": "npm run --prefix server lint",
     "test": "npm run server:test && npm run client:test",
     "server:test": "npm run --prefix server test",
     "client:test": "CI=true npm run --prefix client test"
