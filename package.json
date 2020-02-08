@@ -16,7 +16,7 @@
     "test": "npm run server:test && npm run client:test",
     "server:test": "npm run --prefix server test",
     "client:test": "CI=true npm run --prefix client test",
-    "heroku-postbuild": "npm run build"
+    "heroku-prebuild": "npm run prep"
   },
   "keywords": [],
   "author": "@edwinthinks",
