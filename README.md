@@ -110,4 +110,37 @@ npm run server:lint
 npm run client:lint
 ```
 
+## Deploying To Heroku
+
+You can deploy projects using this boilerplate to heroku quickly! Here is the steps needed 
+to get your project up and running in heroku. 
+
+**Note - this guide assumes you are using the Heroku CLI**
+
+#### Create a Heroku account
+Goto [www.heroku.com](www.heroku.com) and register for an account. Free is okay!
+
+#### Install the CLI & create the project
+Follow the guide [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) to install the Heroku CLI.
+
+Create the heroku project:
+```
+heroku create
+```
+#### Add Postgres DB
+
+In the CLI, add the postgres database via:
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+#### Deploy!
+You can now deploy to heroku via push:
+```
+git push heroku master
+```
+
+After deployment you can view the application using `heroku open`. This will open a browser to your deployed project!
+
+
 
