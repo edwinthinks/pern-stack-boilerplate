@@ -2,6 +2,8 @@
 
 This is a boilerplate for a project that aims to use React with Express, Node, and Postgres. Using this boilerplate you should be able to easily develop & deploy a functioning React application that communicates with a API backend written with express.
 
+This boilerplate is deployed on heroku. You can view it [here](https://pern-stack.herokuapp.com/)
+
 #### Happy coding!
 ![Cat Typing Very Fast](https://media.giphy.com/media/heIX5HfWgEYlW/giphy.gif)
 
@@ -109,5 +111,38 @@ Or optionally you can run the server & client linting separately
 npm run server:lint
 npm run client:lint
 ```
+
+## Deploying To Heroku
+
+You can deploy projects using this boilerplate to heroku quickly! Here is the steps needed 
+to get your project up and running in heroku. 
+
+**Note - this guide assumes you are using the Heroku CLI**
+
+#### Create a Heroku account
+Goto [www.heroku.com](www.heroku.com) and register for an account. Free is okay!
+
+#### Install the CLI & create the project
+Follow the guide [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) to install the Heroku CLI.
+
+Create the heroku project:
+```
+heroku create
+```
+#### Add Postgres DB
+
+In the CLI, add the postgres database via:
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+#### Deploy!
+You can now deploy to heroku via push:
+```
+git push heroku master
+```
+
+After deployment you can view the application using `heroku open`. This will open a browser to your deployed project!
+
 
 

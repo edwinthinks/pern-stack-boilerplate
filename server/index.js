@@ -1,10 +1,5 @@
 import logger from 'loglevel'
-import startServer from './src/start.js'
-
-/*
- * Store a boolean value that indicates if the
- */
-const isProd = process.env.NODE_ENV === 'production'
+import { startServer, inProduction } from './src/start.js'
 
 /*
  * Set the corresponding log level to show more or less logs
@@ -12,14 +7,14 @@ const isProd = process.env.NODE_ENV === 'production'
  * Production normallys shows less logs whereas others are
  * set to show more.
  */
-const logLevel = process.env.LOG_LEVEL || (isProd ? 'warn' : 'info')
+const logLevel = process.env.LOG_LEVEL || (inProduction() ? 'warn' : 'info')
 logger.setLevel(logLevel)
 
 /*
  * Load environment variables for non production through
  * the .env file located in `/server`
  */
-if (!isProd) {
+if (!inProduction()) {
   require('dotenv').config()
 }
 
