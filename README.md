@@ -72,6 +72,11 @@ npx sequelize db:migrate
 npx sequelize db:seed:all
 ```
 
+Visit [here](https://github.com/sequelize/cli#usage) for more options or via help:
+```
+npx sequelize --help
+```
+
 ### Starting the server & client
 
 Start the client and server in development mode
@@ -143,6 +148,7 @@ git push heroku master
 ```
 
 After deployment you can view the application using `heroku open`. This will open a browser to your deployed project!
+
 
 
 
