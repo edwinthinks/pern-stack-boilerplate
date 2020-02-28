@@ -5,6 +5,7 @@ function getRouter () {
   const router = express.Router()
 
   router.get('/users', usersController.index)
+  router.post('/users', usersController.create)
 
   return router
 }

@@ -6,4 +6,13 @@ async function index (req, res) {
   res.json(users)
 }
 
-export { index }
+async function create (req, res) {
+  try {
+    const user = await models.User.create(req.body);
+    res.json(user);
+  } catch (error) {
+    res.json(error)
+  }
+}
+
+export { index, create }
