@@ -1,3 +1,4 @@
 api: npm run server:develop
-web: PORT=3000 npm run client:develop
+web: BROWSER=none PORT=3000 npm run client:develop
+
 

@@ -2,6 +2,11 @@
 
 This is a boilerplate for a project that aims to use React with Express, Node, and Postgres. Using this boilerplate you should be able to easily develop & deploy a functioning React application that communicates with a API backend written with express.
 
+### Includes
+
+- Tailwind
+- PostCSS
+
 This boilerplate is deployed on heroku. You can view it [here](https://pern-stack.herokuapp.com/)
 
 #### Happy coding!
@@ -84,7 +89,7 @@ Start the client and server in development mode
 npm run develop
 ```
 
-A browser should open up to [http://localhost:3000/](http://localhost:3000/) with the frontend client loaded.
+A browser should be hosted on [http://localhost:3000/](http://localhost:3000/) with the frontend client loaded.
 The server will be hosted on [http://localhost:3001/api](http://localhost:3001/api). You can test
 that the server's API is working by accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) and
 you should see sample user data.
@@ -148,7 +153,3 @@ git push heroku master
 ```
 
 After deployment you can view the application using `heroku open`. This will open a browser to your deployed project!
-
-
-
-
