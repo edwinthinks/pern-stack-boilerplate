@@ -27,6 +27,24 @@ async function show (req, res) {
   res.json(user)
 }
 
+async function destroy (req, res) {
+  const user = await models.User.findByPk(req.params.id)
+  if (!user) {
+    // Return 404 with nothing
+    res.status(404)
+    res.json({})
+  }
+
+  try {
+    await user.destroy()
+    res.status(200)
+    res.json({})
+  } catch (error) {
+    res.status(422)
+    res.json(error)
+  }
+}
+
 async function update (req, res) {
   const user = await models.User.findByPk(req.params.id)
   if (!user) {
@@ -44,4 +62,4 @@ async function update (req, res) {
   }
 }
 
-export { index, create, show, update }
+export { index, create, show, destroy, update }
