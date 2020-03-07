@@ -8,6 +8,7 @@ function getRouter () {
   router.post('/users', usersController.create)
   router.get('/users/:id', usersController.show)
   router.patch('/users/:id', usersController.update)
+  router.delete('/users/:id', usersController.destroy)
 
   return router
 }
