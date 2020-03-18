@@ -28,3 +28,46 @@
   grid-area: list;
   padding: 20px;
 }
+
+.user-row {
+}
+
+.user-row__action-button {
+  margin: 0 2px;
+}
+
+.user-form {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template:
+    "title title"
+    "first-name last-name"
+    "email email"
+    ". actions";
+}
+
+.user-form__title {
+  grid-area: title;
+}
+
+.user-form__first-name {
+  grid-area: first-name;
+}
+
+.user-form__last-name {
+  grid-area: last-name;
+}
+
+.user-form__email {
+  grid-area: email;
+}
+
+.user-form__actions {
+  grid-area: actions;
+  margin-top: 20px;
+}
+
+.user-form__submit {
+  float: right;
+}
