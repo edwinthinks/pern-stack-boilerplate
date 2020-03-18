@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './UserManagement.css'
 
 function UserManagement() {
-  // **SAMPLE**
   const [users, setUsers] = useState([])
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: ""
+  })
+  const [errorMessages, setErrorMessages] = useState([])
 
   useEffect(() => {
     fetchUsers();
@@ -17,11 +22,52 @@ function UserManagement() {
   };
 
   async function deleteUser(userId) {
-    const response = await fetch(`/api/users/${userId}`, {method: 'DELETE'});
-    const json = await response.json();
+    const response = await fetch(`/api/users/${userId}`, {
+      method: 'DELETE'
+    });
 
     // Re-fetch users after deleting
     fetchUsers()
+  }
+
+  function handleFormChange(event) {
+    const { name, value } = event.target;
+    const newUserData = {...userData, ...{[name]: value}}
+    setUserData(newUserData);
+  }
+
+  async function submitCreateUser() {
+    const response = await fetch(`/api/users/`, {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.status != 200) {
+      // A server side error occured. Display the
+      // error messages.
+      handleServerError(response);
+    } else {
+      clearUserForm();
+      // Re-fetch users after creating new
+      fetchUsers()
+    }
+  }
+
+  async function handleServerError(response) {
+    const json = await response.json();
+    const errorMessages = json.errors.map((e) => {
+      return e.message
+    })
+
+    setErrorMessages(errorMessages);
+  }
+
+  function clearUserForm() {
+    setErrorMessages([])
+    setUserData({firstName: "", lastName: "", email: ""})
   }
 
   return (
@@ -31,25 +77,51 @@ function UserManagement() {
           <h1> Sample User Management UI </h1>
         </div>
         <div className='user-management__form'>
-          <form className='user-form'>
+          <form className='user-form' onSubmit={e => {e.preventDefault()}}>
             <div className='user-form__title'>
               <h1> Create User </h1>
             </div>
-            <div class="form-group user-form__first-name">
+            <div className="user-form__errors">
+              <ul>
+                {errorMessages.map((em) => {
+                  return (
+                    <li>{em}</li>
+                  )
+                })}
+              </ul>
+            </div>
+            <div className="form-group user-form__first-name">
               <label>First Name</label>
-              <input type="text" class="form-control"/>
+              <input
+                type="text"
+                className="form-control"
+                name='firstName'
+                value={userData.firstName}
+                onChange={handleFormChange}/>
             </div>
-            <div class="form-group user-form__last-name">
+            <div className="form-group user-form__last-name">
               <label>Last Name</label>
-              <input type="text" class="form-control"/>
+              <input
+                type="text"
+                className="form-control"
+                name='lastName'
+                value={userData.lastName}
+                onChange={handleFormChange}/>
             </div>
-            <div class="form-group user-form__email">
+            <div className="form-group user-form__email">
               <label>Email</label>
-              <input type="text" class="form-control"/>
+              <input
+                type="text"
+                className="form-control"
+                name='email'
+                value={userData.email}
+                onChange={handleFormChange}/>
             </div>
 
-            <div class="form-group user-form__actions">
-              <button class="btn btn-primary user-form__submit">Submit</button>
+            <div className="form-group user-form__actions">
+              <button className="btn btn-primary user-form__submit" onClick={submitCreateUser}>
+                Submit
+              </button>
             </div>
           </form>
         </div>
@@ -80,7 +152,7 @@ function UserManagement() {
                       <button type="button" className="btn btn-primary user-row__action-button">
                         Edit
                       </button>
-                      <button type="button" class="btn btn-danger user-row__action-button" onClick={() => { deleteUser(u.id) }}>
+                      <button type="button" className="btn btn-danger user-row__action-button" onClick={() => { deleteUser(u.id) }}>
                         Delete
                       </button>
                     </td>

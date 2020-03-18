@@ -42,6 +42,7 @@
   grid-row-gap: 10px;
   grid-template:
     "title title"
+    "errors errors"
     "first-name last-name"
     "email email"
     ". actions";
@@ -49,6 +50,11 @@
 
 .user-form__title {
   grid-area: title;
+}
+
+.user-form__errors {
+  color: red;
+  grid-area: errors;
 }
 
 .user-form__first-name {
