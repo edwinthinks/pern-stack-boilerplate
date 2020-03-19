@@ -29,11 +29,23 @@
   padding: 20px;
 }
 
+.user-table {
+
+}
+
+.user-table tr {
+  font-size: 0.7em
+}
+
 .user-row {
 }
 
 .user-row__action-button {
   margin: 0 2px;
+}
+
+.user-row__action-button button {
+  font-size: 0.8em;
 }
 
 .user-form {
@@ -77,3 +89,13 @@
 .user-form__submit {
   float: right;
 }
+
+@media only screen and (max-width: 600px) {
+  .user-management {
+    grid-template:
+      "header"
+      "form"
+      "list"
+  }
+}
+

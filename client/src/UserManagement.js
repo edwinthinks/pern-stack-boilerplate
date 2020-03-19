@@ -104,16 +104,22 @@ function UserManagement() {
     setUserData(emptyUserFormData)
   }
 
+  function formatDateString(dateString) {
+    const d = new Date(dateString)
+    return d.toLocaleString()
+  }
+
+
   return (
     <div>
       <div className='user-management'>
         <div className='user-management__header'>
-          <h1> Sample User Management UI </h1>
+          <h3> Sample User Management UI </h3>
         </div>
         <div className='user-management__form'>
           <form className='user-form' onSubmit={e => {e.preventDefault()}}>
             <div className='user-form__title'>
-              <h1> Create User </h1>
+              <h3> Create User </h3>
             </div>
             <div className="user-form__errors">
               <ul>
@@ -160,7 +166,7 @@ function UserManagement() {
           </form>
         </div>
         <div className='user-management__list'>
-          <table className='table'>
+          <table className='table-responsive user-table'>
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -180,8 +186,8 @@ function UserManagement() {
                     <td>{u.firstName}</td>
                     <td>{u.lastName}</td>
                     <td>{u.email}</td>
-                    <td>{u.updatedAt}</td>
-                    <td>{u.createdAt}</td>
+                    <td>{formatDateString(u.updatedAt)}</td>
+                    <td>{formatDateString(u.createdAt)}</td>
                     <td>
                       <button type="button" className="btn btn-primary user-row__action-button">
                         Edit
