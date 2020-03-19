@@ -2,18 +2,28 @@ import React, { useState, useEffect } from 'react';
 import './UserManagement.css'
 
 function UserManagement() {
-  const [users, setUsers] = useState([])
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: ""
-  })
-  const [errorMessages, setErrorMessages] = useState([])
+  // Define the empty state of the user form to be
+  // used when clearing out the form and setting the
+  // default state.
+  const emptyUserFormData = {firstName: "", lastName: "", email: ""}
 
+  // Define the useState hooks to help manage the
+  // states for each.
+  const [users, setUsers] = useState([]) // User list.
+  const [userData, setUserData] = useState(emptyUserFormData); // User form content.
+  const [errorMessages, setErrorMessages] = useState([]) // Error message from server.
+
+  /*
+   * Loads the users from the API on load
+   */
   useEffect(() => {
     fetchUsers();
   },[])
 
+  /*
+   * Fetches users from the API and updates the
+   * state value for the users list.
+   */
   async function fetchUsers() {
     const response = await fetch('/api/users');
     const json = await response.json();
@@ -21,6 +31,10 @@ function UserManagement() {
     setUsers(json);
   };
 
+  /**
+   * Deletes a user via the API and then re-fetches
+   * the list of users and updates it's state.
+   */
   async function deleteUser(userId) {
     const response = await fetch(`/api/users/${userId}`, {
       method: 'DELETE'
@@ -30,13 +44,13 @@ function UserManagement() {
     fetchUsers()
   }
 
-  function handleFormChange(event) {
-    const { name, value } = event.target;
-    const newUserData = {...userData, ...{[name]: value}}
-    setUserData(newUserData);
-  }
-
-  async function submitCreateUser() {
+  /*
+   * Creates a new user via the API. If the response indicates
+   * a failure, it will render the errors retrieved by the API
+   * via state change. Otherwise it will clear the form and then
+   * re-fetch the users list.
+   */
+  async function createUser() {
     const response = await fetch(`/api/users/`, {
       method: 'POST',
       body: JSON.stringify(userData),
@@ -56,6 +70,22 @@ function UserManagement() {
     }
   }
 
+  /**
+   * Handles events related to changes made on the
+   * user form. This will update the state of the
+   * user form data.
+   */
+  function handleUserFormChange(event) {
+    const { name, value } = event.target;
+    const newUserData = {...userData, ...{[name]: value}}
+    setUserData(newUserData);
+  }
+
+  /*
+   * Accepts a response that indicated a unsuccesful API
+   * transaction and renders the error messages it contains
+   * via state change.
+   */
   async function handleServerError(response) {
     const json = await response.json();
     const errorMessages = json.errors.map((e) => {
@@ -65,9 +95,13 @@ function UserManagement() {
     setErrorMessages(errorMessages);
   }
 
+  /*
+   * Clears out the input values of the user form
+   * and the error messages.
+   */
   function clearUserForm() {
     setErrorMessages([])
-    setUserData({firstName: "", lastName: "", email: ""})
+    setUserData(emptyUserFormData)
   }
 
   return (
@@ -97,7 +131,7 @@ function UserManagement() {
                 className="form-control"
                 name='firstName'
                 value={userData.firstName}
-                onChange={handleFormChange}/>
+                onChange={handleUserFormChange}/>
             </div>
             <div className="form-group user-form__last-name">
               <label>Last Name</label>
@@ -106,7 +140,7 @@ function UserManagement() {
                 className="form-control"
                 name='lastName'
                 value={userData.lastName}
-                onChange={handleFormChange}/>
+                onChange={handleUserFormChange}/>
             </div>
             <div className="form-group user-form__email">
               <label>Email</label>
@@ -115,11 +149,11 @@ function UserManagement() {
                 className="form-control"
                 name='email'
                 value={userData.email}
-                onChange={handleFormChange}/>
+                onChange={handleUserFormChange}/>
             </div>
 
             <div className="form-group user-form__actions">
-              <button className="btn btn-primary user-form__submit" onClick={submitCreateUser}>
+              <button className="btn btn-primary user-form__submit" onClick={createUser}>
                 Submit
               </button>
             </div>
