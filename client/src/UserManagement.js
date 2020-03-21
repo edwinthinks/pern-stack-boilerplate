@@ -165,8 +165,8 @@ function UserManagement() {
             </div>
           </form>
         </div>
-        <div className='user-management__list'>
-          <table className='table-responsive user-table'>
+        <div className='user-management__list table-responsive'>
+          <table className='table table-striped user-table'>
             <thead>
               <tr>
                 <th scope="col">ID</th>
