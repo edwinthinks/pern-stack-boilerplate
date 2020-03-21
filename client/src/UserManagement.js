@@ -181,7 +181,7 @@ function UserManagement() {
             <tbody>
               {users.map((u) => {
                 return (
-                  <tr className='user-row'>
+                  <tr className='user-row' key={u.id}>
                     <td>{u.id}</td>
                     <td>{u.firstName}</td>
                     <td>{u.lastName}</td>
