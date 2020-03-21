@@ -189,10 +189,10 @@ function UserManagement() {
                     <td>{formatDateString(u.updatedAt)}</td>
                     <td>{formatDateString(u.createdAt)}</td>
                     <td>
-                      <button type="button" className="btn btn-primary user-row__action-button">
+                      <button type="button" className="btn-primary user-row__action-button">
                         Edit
                       </button>
-                      <button type="button" className="btn btn-danger user-row__action-button" onClick={() => { deleteUser(u.id) }}>
+                      <button type="button" className="btn-danger user-row__action-button" onClick={() => { deleteUser(u.id) }}>
                         Delete
                       </button>
                     </td>
