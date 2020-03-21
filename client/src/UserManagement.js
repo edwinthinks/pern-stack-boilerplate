@@ -36,7 +36,7 @@ function UserManagement() {
    * the list of users and updates it's state.
    */
   async function deleteUser(userId) {
-    const response = await fetch(`/api/users/${userId}`, {
+    await fetch(`/api/users/${userId}`, {
       method: 'DELETE'
     });
 
@@ -59,7 +59,7 @@ function UserManagement() {
       }
     });
 
-    if (response.status != 200) {
+    if (response.status !== 200) {
       // A server side error occured. Display the
       // error messages.
       handleServerError(response);
