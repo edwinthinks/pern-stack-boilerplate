@@ -89,7 +89,10 @@ The server will be hosted on [http://localhost:3001/api](http://localhost:3001/a
 that the server's API is working by accessing [http://localhost:3001/api/users](http://localhost:3001/api/users) and
 you should see sample user data.
 
-![Demo](sample-demo.png)
+You should see a demo User Management form that you could view, create, and update Users stored 
+on the backend.
+
+![Demo](sample-demo-v2.png)
 
 ## Tests
 
@@ -148,7 +151,4 @@ git push heroku master
 ```
 
 After deployment you can view the application using `heroku open`. This will open a browser to your deployed project!
-
-
-
 
