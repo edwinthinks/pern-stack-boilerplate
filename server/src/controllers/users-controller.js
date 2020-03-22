@@ -1,7 +1,10 @@
 import models from '../models'
 
 async function index (req, res) {
-  const users = await models.User.findAll({})
+  const users = await models.User.findAll({
+    order: [
+      ['id', 'DESC']
+    ]})
 
   res.json(users)
 }

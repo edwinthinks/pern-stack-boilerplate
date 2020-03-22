@@ -40,14 +40,19 @@
 .user-row {
 }
 
+.user-row--selected {
+  background-color: wheat !important;
+}
+
 .user-row__action-button {
   margin: 0 2px;
   margin: 0.1em;
 }
 
-.user-row__action-button button {
-  font-size: 0.8em;
+.user-row__action-button:disabled {
+  background-color: grey !important;
 }
+
 
 .user-form {
   display: grid;
@@ -58,7 +63,7 @@
     "errors errors"
     "first-name last-name"
     "email email"
-    ". actions";
+    "actions actions";
 }
 
 .user-form__title {
@@ -88,8 +93,13 @@
   margin-top: 20px;
 }
 
-.user-form__submit {
+.user-form__buttons {
+  margin: 1px;
   float: right;
+}
+
+.user-form__buttons--cancel {
+  background-color: grey !important;
 }
 
 @media only screen and (max-width: 1100px) {

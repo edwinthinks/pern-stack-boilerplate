@@ -44,6 +44,14 @@ function UserManagement() {
     fetchUsers()
   }
 
+  function createOrUpdateUser() {
+    if (userData.id) {
+      updateUser()
+    } else {
+      createUser()
+    }
+  }
+
   /*
    * Creates a new user via the API. If the response indicates
    * a failure, it will render the errors retrieved by the API
@@ -54,6 +62,38 @@ function UserManagement() {
     const response = await fetch(`/api/users/`, {
       method: 'POST',
       body: JSON.stringify(userData),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.status !== 200) {
+      // A server side error occured. Display the
+      // error messages.
+      handleServerError(response);
+    } else {
+      clearUserForm();
+      // Re-fetch users after creating new
+      fetchUsers()
+    }
+  }
+
+  /*
+   * Creates a new user via the API. If the response indicates
+   * a failure, it will render the errors retrieved by the API
+   * via state change. Otherwise it will clear the form and then
+   * re-fetch the users list.
+   */
+  async function updateUser() {
+    const updatedUserData = {
+      firstName: userData.firstname,
+      lastName: userData.lastName,
+      email: userData.email
+    }
+
+    const response = await fetch(`/api/users/${userData.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(updatedUserData),
       headers:{
         'Content-Type': 'application/json'
       }
@@ -96,6 +136,15 @@ function UserManagement() {
   }
 
   /*
+   * Sets the user form data to match the provided
+   * user. This enables the user to start editing
+   * the values of an exisiting user.
+   */
+  function selectUserForEdit(user) {
+    setUserData(user)
+  }
+
+  /*
    * Clears out the input values of the user form
    * and the error messages.
    */
@@ -104,11 +153,14 @@ function UserManagement() {
     setUserData(emptyUserFormData)
   }
 
+  /*
+   * Returns a pretty formatted version of the
+   * provided date string.
+   */
   function formatDateString(dateString) {
     const d = new Date(dateString)
     return d.toLocaleString()
   }
-
 
   return (
     <div>
@@ -119,7 +171,7 @@ function UserManagement() {
         <div className='user-management__form'>
           <form className='user-form' onSubmit={e => {e.preventDefault()}}>
             <div className='user-form__title'>
-              <h3> Create User </h3>
+              <h3> {userData.id ? `Edit User ${userData.id}` : 'Create New User'}</h3>
             </div>
             <div className="user-form__errors">
               <ul>
@@ -159,9 +211,14 @@ function UserManagement() {
             </div>
 
             <div className="form-group user-form__actions">
-              <button className="btn btn-primary user-form__submit" onClick={createUser}>
-                Submit
+              <button className="btn btn-primary user-form__buttons" onClick={createOrUpdateUser}>
+                {userData.id ? 'Update' : 'Submit'}
               </button>
+              {userData.id &&
+                <button className="btn btn-primary user-form__buttons user-form__buttons--cancel" onClick={clearUserForm}>
+                  Cancel
+                </button>
+              }
             </div>
           </form>
         </div>
@@ -181,7 +238,7 @@ function UserManagement() {
             <tbody>
               {users.map((u) => {
                 return (
-                  <tr className='user-row' key={u.id}>
+                  <tr className={`user-row ${userData.id === u.id ? 'user-row--selected' : ''}`} key={u.id}>
                     <td>{u.id}</td>
                     <td>{u.firstName}</td>
                     <td>{u.lastName}</td>
@@ -189,12 +246,21 @@ function UserManagement() {
                     <td>{formatDateString(u.updatedAt)}</td>
                     <td>{formatDateString(u.createdAt)}</td>
                     <td>
-                      <button type="button" className="btn-primary user-row__action-button">
-                        Edit
+                      <button
+                        type="button"
+                        className="btn-primary user-row__action-button"
+                        disabled={userData.id === u.id}
+                        onClick={() => { selectUserForEdit(u) }}>
+                        {userData.id === u.id ? 'Editing...' : 'Edit' }
                       </button>
-                      <button type="button" className="btn-danger user-row__action-button" onClick={() => { deleteUser(u.id) }}>
-                        Delete
-                      </button>
+                      {userData.id !== u.id &&
+                        <button
+                          type="button"
+                          className="btn-danger user-row__action-button"
+                          onClick={() => { deleteUser(u.id) }}>
+                          Delete
+                        </button>
+                      }
                     </td>
                   </tr>
                 )
